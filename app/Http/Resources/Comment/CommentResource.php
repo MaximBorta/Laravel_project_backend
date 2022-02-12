@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Post;
+namespace App\Http\Resources\Comment;
 
-use App\Http\Resources\Comment\CommentResource;
 use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,12 +17,10 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'description' => $this->description,
-            'post_img' => $this->post_img,
-            'user_id' => $this->user_id,
+            'comment' => $this->comment,
+            'commentable_id' => $this->commentable_id,
+            'commentable_type' => $this->commentable_type,
             'created_at' => $this->created_at,
-            'comments' => CommentResource::collection($this->comments)
         ];
     }
 }

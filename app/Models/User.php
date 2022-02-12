@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Chat\Message;
+use App\Models\Comment\Comment;
 use App\Models\Post\Post;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

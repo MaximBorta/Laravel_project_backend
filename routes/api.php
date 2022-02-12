@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ConversationController;
 use App\Http\Controllers\Api\FriendsController;
+use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\UserController;
@@ -43,10 +44,14 @@ Route::group(['prefix' => 'users', 'middleware' => 'CORS'], function ($router) {
     Route::get('/conversation/{user}', [ConversationController::class, 'index']);
     Route::post('/conversation/{user}', [ConversationController::class, 'store']);
     Route::get('/friends', [FriendsController::class, 'index']);
+    Route::get('/friends/{friend}', [FriendsController::class, 'get_one']);
 // Online Users
 // Offline Users
     Route::put('/user/{user}/online', UserOnlineController::class);
     Route::put('/user/{user}/offline', UserOfflineController::class);
+//Comments
+    Route::get('/get-post-comment/{post_id}', [CommentController::class, 'get_post_comment']);
+    Route::post('/send-comment/{post_id}', [CommentController::class, 'create_comment']);
 });
 
 Route::group(['prefix' => 'main'], function() {

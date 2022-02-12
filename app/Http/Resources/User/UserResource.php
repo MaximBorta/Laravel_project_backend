@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\User;
 
+use App\Http\Resources\Post\PostResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -20,6 +21,7 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'user_avatar' => $this->user_avatar,
             'created_at' => $this->created_at,
+            'posts' => PostResource::collection($this->posts)
         ];
     }
 }

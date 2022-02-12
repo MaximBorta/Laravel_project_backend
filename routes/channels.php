@@ -22,6 +22,12 @@ Broadcast::channel('chat', function($user) {
    return $user;
 });
 
+Broadcast::channel('counter', function ($user) {
+   return [
+       'name' => $user->name
+   ];
+});
+
 Broadcast::channel('global-channel', function ($user) {
     return true;
 });
